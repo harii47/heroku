@@ -1,0 +1,75 @@
+<title>Selected Donor</title>
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+    span{
+        margin-left: 20px;
+    }
+        table{
+        font-size: 30px;
+            padding: 30px;
+    }
+    td{padding-left: 300px}
+    form{
+        font-size: 35px;
+    }
+</style>
+    {% if show_details %}
+        <div class="jumbotron">
+        <table>
+            {% for show_details in show_details %}
+            <tr>
+                <th>Name:-</th>
+                <td>{{ show_details.Name }}</td>
+            </tr>
+            <tr>
+                <th>Group:-</th>
+                <td>{{ show_details.Blood_Group}}</td>
+            </tr>
+            <tr>
+                <th>Mobile:-</th>
+                <td>{{ show_details.Mobile }}</td>
+            </tr>
+            <tr>
+                <th>Email Id:-</th>
+                <td>{{ show_details.Email}}</td>
+            </tr>
+            <tr>
+                <th>Address :-</th>
+                <td>{{ show_details.Address}}</td>
+            </tr>
+            <tr>
+                <th>Date Of Birth :-</th>
+                <td>{{ show_details.Date_O_Birth}}</td>
+            </tr>
+        </table>
+            <h3>{{ show_details.Name }} Have Donate Blood on-{{ show_details.Last_Donation_Date }} </h3>
+        <p>Here is the Selected Donor Mobile-{{ show_details.Mobile }} & Email id-{{ show_details.Email }} ,You Can
+            contact to them,No need to be worry about Donor ,all people registered here as DONOR only.......<br>
+            If you are going to talk to them ,than tell them you got their Contact Details Through Blood Bank Site .
+        </p>
+        <a href="{% url 'confirmed' %}?mobile={{ show_details.Mobile}}" class="btn btn-primary btn-lg">Contact To Donner</a>
+                </div>
+                {% endfor %}
+        {% else %}
+        <h3> Sorry ! There is no Donor as per your searched Donor </h3>
+        <form action="{% url 'search_blood_group' %}">
+        {% csrf_token %}
+        <label class="text-red" for="group">Select  Blood Group- </label>
+        <select id="group" name="search">
+            {% for foo in all_blood %}
+                    <option id="op1" value="{{ foo.Blood_Group }}">{{ foo.Blood_Group}}</option>
+            {% endfor %}
+                </select>
+        <label for="area">Orr Area Name-</label>
+        <select id="area" name="area">
+            {% for foo in all_blood %}
+                    <option id="op1" value="{{ foo.Address }}">{{ foo.Address}}</option>
+            {% endfor %}
+                </select>
+        <button type="submit">Search</button>
+    </form>
+    {% endif %}
+
+    {% endblock %}
+

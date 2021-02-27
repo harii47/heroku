@@ -1,0 +1,80 @@
+<title>Suggestion</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        textarea {
+            max-height: 200px;
+            max-width: 1300px;
+        }
+
+        .col2 {
+            background: skyblue;
+            border-radius: 20px;
+        }
+
+        hr {
+            background: Black;
+        }
+
+        img {
+            height: 420px;
+            width: 420px;
+        }
+
+        form {
+            background-image: url("{% static 'back.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 30px;
+            font-style: oblique;
+        }
+
+        .form-control {
+            width: 500px;
+            font-style: oblique;
+        }
+
+        .container, .jumbotron {
+        }
+    </style>
+    <h4>Last Suggestion given by {{ name }}</h4>
+    {{ msg }}
+    <center>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label><b>Enter Your Name:-</b></label>
+                <input type="text" class="form-control" name="name" placeholder="Enter Your Name.."><br>
+            </div>
+            <div class="form-group">
+                <label><b>Enter Your Valuable Suggestion to us:-</b></label>
+                <textarea class="form-control" name="suggestion_name"
+                          placeholder="Enter your suggestion here..."></textarea><br>
+            </div>
+            <input type="submit" class="btn btn-danger" value="Suggest">
+            <br>
+            <br>
+            <br>
+        </form>
+    </center>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-7">
+            {% for foo in all %}
+                <div class="container col2">
+                    <div class="jumbotron col2">
+                        <h3>{{ foo.name }}</h3>
+                        <h3>{{ foo.suggestion_name }}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-5">
+            <img src="{% static 'face1.jpg' %}">
+            <img src="{% static 'face4.jpg' %}">
+            <img src="{% static 'face5.jpg' %}">
+        </div>
+    </div>
+{% endblock %}

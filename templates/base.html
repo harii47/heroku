@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I am Base</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+         nav{
+            font-size: 30px;
+        }
+        .base_a{
+            margin-top: 2px;
+            margin-left: 2px;
+            text-decoration: none;
+            border:2px black solid;
+            border-radius: 10px;
+            color: white;
+            padding: 7px;
+        }
+        .base_a:hover{
+            background-color: blue;
+            color: white;
+            text-decoration: none;
+        }
+        .navbar{
+            border-radius: 20px;
+            background: black;
+        }
+        img{
+            height: 300px;
+            width: 300px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+{% block link_block %}
+{#<p id="pp1">#}
+<nav class="navbar navbar-inverse">
+        <center><a class="navbar-brand" id="img" href="/home/" style="font-size: 40px; color: white"><span
+                class="glyphicon glyphicon-fire" aria-hidden="true"></span> Blood Bank</a></center>
+</nav>
+        <div class="container">
+    <nav>
+        <div class="nav">
+        <a class="base_a bg-primary" href="/home/">Home</a>
+        <a class="base_a bg-success" href="{% url 'register' %}">Register</a>
+        <a href="{% url 'contact' %}" class="bg-warning base_a">Donors</a>
+            <a href="{% url 'feedback' %}" class="bg-success base_a">Feedback</a>
+        <a href="{% url 'gallery' %}" class="base_a bg-info">Gallery</a>
+        <a href="{% url 'suggest' %}" class="bg-warning base_a">Suggestion</a>
+        <a href="{% url 'problem' %}" class="bg-danger base_a">Problem</a>
+            </div>
+    </nav><br>
+    <marquee><i>'There is no great joy than saving a soul'</i></marquee>
+    <br>
+    {% block content %}
+    {% endblock %}
+        <div class="row">
+            <div class="col-lg-4">
+                <img src="{% static 'B1.jpg' %}">
+                <img src="{% static 'B2.jpg' %}">
+                <img src="{% static 'B3.jpg' %}">
+            </div>
+             <div class="col-lg-4">
+                <img src="{% static 'B4.png' %}">
+                <img src="{% static 'B5.jpg' %}">
+                <img src="{% static 'B6.jpg' %}">
+            </div>
+             <div class="col-lg-4">
+                <img src="{% static 'B7.png' %}">
+                <img src="{% static 'B8.jpg' %}">
+                <img src="{% static 'b9.jpg' %}">
+            </div>
+        </div>
+        </div>
+{% endblock %}
+{#</p>#}
+</body>
+</html>

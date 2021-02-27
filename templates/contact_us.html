@@ -1,0 +1,38 @@
+<title>Donors</title>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+      table {
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+        <h1 id="_h1_1">This is the Donner's Table You Can Select Any of this Donner here</h1>
+    <table class="table table-bordered text-center text-black">
+        <tr class="bg-danger">
+            <th>Donner Id no</th>
+            <th>Donner Mobile number</th>
+            <th>Donner Name</th>
+            <th>Donner Email id</th>
+            <th>Donner City</th>
+            <th>Donner Blood Group</th>
+            <th>Contact To Blood Donner</th>
+        </tr>
+            {% for obj in all_blood %}
+                <tr class="bg-warning">
+                    <td><a href="{% url 'ask_help' %}?id_no={{ obj.id }}">{{ obj.id }}</a></td>
+                    <td><a href="{% url 'ask_help' %}?id_no={{ obj.id }}">{{ obj.Mobile }}</a></td>
+                    <td><a href="{% url 'ask_help' %}?id_no={{ obj.id }}">{{ obj.Name }}</a></td>
+                    <td><a href="{% url 'ask_help' %}?id_no={{ obj.id }}">{{ obj.Email }}</a></td>
+                    <td><a href="{% url 'ask_help' %}?id_no={{ obj.id }}">{{ obj.Address }}</a></td>
+                    <td><a href="{% url 'ask_help' %}?id_no={{ obj.id }}">{{ obj.Blood_Group }}</a></td>
+                    <td><a href="{% url 'ask_help' %}?id_no={{ obj.id }}">Ask help</a></td>
+                </tr>
+            {% endfor %}
+            <hr>
+    </table>
+    <video controls><source src="{% static 'VID-20190419-WA0048.mp4' %}" type="video/mp4"></video>
+{% endblock %}

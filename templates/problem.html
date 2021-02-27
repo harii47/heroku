@@ -1,0 +1,29 @@
+<style>
+    .prob{
+        border-radius: 20px;
+        padding: 20px;
+        width: 300px;
+    }
+    #problem{
+        max-width: 500px;
+        max-height: 100px;
+    }
+
+</style>
+<title>Problem page</title>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="bg-success prob">
+<form class="bg">
+    <div class="form-group">
+            <label for="mobile">Enter User Mobile:</label>
+        <input type="number" id="mobile" class="form-control" name="number" placeholder="enter your moblie number" required>
+    </div>
+    <div class="form-group">
+    <label for="problem">Enter Your Problem:</label>
+    <textarea id="problem" class="form-control" name="problem_name" placeholder="enter your problem" required></textarea>
+</div>
+    <button type="submit" class="bg-primary">Submit </button>
+</form>
+    </div>
+{% endblock %}

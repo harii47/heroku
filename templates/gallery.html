@@ -1,0 +1,35 @@
+<title>Gallery</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <style>
+    img{
+            height: 300px;
+            width: 300px;
+            padding: 10px;
+        }
+</style>
+    <div class="row">
+    <div class="col-lg-4">
+        <img src="{% static 'B1.jpg'%}">
+        <img src="{% static 'B2.jpg'%}">
+        <img src="{% static 'B3.jpg'%}">
+        <img src="{% static 'B4.png'%}">
+        <img src="{% static 'B5.jpg'%}">
+    </div>
+    <div class="col-lg-4">
+        <img src="{%  static 'B6.jpg'%}">
+        <img src="{% static 'B7.png'%}">
+        <img src="{% static 'B8.JPG'%}">
+        <img src="{% static 'b9.jpg'%}">
+    </div>
+    <div class="col-lg-4">
+        <img src="{% static 'b10.jpg'%}">
+                <img src="{% static 'b11.png'%}">
+        <img src="{% static 'b12.jpg'%}">
+        <img src="{% static 'b13.jpg'%}">
+        <img src="{% static 'b14.jpg'%}">
+
+    </div>
+    </div>
+{% endblock %}

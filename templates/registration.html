@@ -1,0 +1,71 @@
+<title>Register</title>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+    .jumbotron{
+        border-radius: 20px;
+        background-image: url("{% static 'face4.jpg'%}");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .form-group{
+        width: 300px;
+    }
+    .container{
+        color: #33aa33;
+        font-size: 30px;
+        font-style: oblique;
+    }
+</style>
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="jumbotron">
+            {{ reply }}
+            <div class="form-group">
+                <label for="f_name"><b> Your Name:</b></label>
+                <input type="text" id="f_name" class="form-control" placeholder="Enter First Name" name="f_name">
+            </div>
+            {{ msg }}
+            <div class="form-group">
+                <label for="mobile"><b>Mobile No:</b></label>
+                <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile:" required name="mobile">
+            </div>
+            <div class="form-group">
+                <label for="email"><b>Email Id:</b></label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email id:" required name="email">
+            </div>
+            <div class="form-group">
+                <label for="address"><b> Address:</b></label>
+                <input type="text" class="form-control" id="address" placeholder="Enter address-Area or City Name-" name="address" required >
+            </div>
+            <div class="form-group">
+                <label for="dob"> <b>Date Of Birth:</b></label>
+                <input type="date" class="form-control" id="dob" name="DOB">
+            </div>
+            <div class="form-group">
+                <label for="l_b_donate"> <b>Last Donation Date:</b></label>
+                <input type="date" class="form-control" id="l_b_donate" name="l_b_donate" required >
+            </div>
+            <div class="form-group">
+                <label for="blood"><b> Blood Group:</b></label>
+                <select name="blood">
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Register">
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

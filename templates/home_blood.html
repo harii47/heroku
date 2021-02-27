@@ -1,0 +1,79 @@
+<title>Home Page</title>
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        #_h1_1 {
+            font-family: "Times New Roman", Times, serif;
+        }
+
+        hr {
+            background: black;
+            height: 2px;
+            border-radius: 10px;
+        }
+
+        table {
+            font-size: 20px;
+            color: red;
+        }
+
+        a  {
+            color: red;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: red;
+        }
+
+        #informed {
+            color: brown;
+            background: bisque;
+            padding: 10px;
+        }
+    </style>
+    <hr>
+    <form action="{% url 'search_blood_group' %}">
+        {% csrf_token %}
+        <label class="text-red" for="group">Select Blood Group- </label>
+        <select id="group" name="search">
+            {% for foo in all_blood %}
+                <option value="{{ foo.Blood_Group }}">{{ foo.Blood_Group }}</option>
+            {% endfor %}
+        </select>
+        <label for="area">Or Area Name-</label>
+        <select id="area" name="area">
+            {% for foo in all_blood %}
+                <option value="{{ foo.Address }}">{{ foo.Address }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Search</button>
+    </form>
+    <hr>
+    {% if type == "informed" %}
+        <h3 id="iinformed">We have Informed the Donor For help You Can contact to Donor Directly {{ mobile }}</h3>
+        <hr>
+    {% endif %}
+    {% if type == 'saved' %}
+        <p>Now you have Become A Blood Donner We will Notify You Whenever anyone require blood near You </p>
+    {% endif %}
+
+            <marquee>
+                <table>
+                    <tr>
+                        <th>Address Of Camp</th>
+                        <th>Date Of Camp</th>
+                    </tr>
+                    {% for d in camp_date %}
+                        <tr>
+                        <td>{{ d.Next_Camp_Address }}</td>
+                        <td>{{ d.Camp_Date }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+{#                Next Camp will be in ->{{ d.Next_Camp_Address }} on :-{{ d.Camp_Date }}#}
+{#                    At-: {{ d.Timing_from }}..&#}
+            </marquee>
+    <marquee>"To give blood you need neither Extra Strength Nor Extra Food, and you will save a life"</marquee>
+{% endblock %}
